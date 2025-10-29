@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+    //Word length of Mary poppin's iconic supercalifragilisticexpialidocious + the null element
+    char word [35];
+
+    printf("Please, give me the word you wish to convert to mayus: ");
+    scanf("%s", word, "\n");
+    
+    // Counter to track the word's length and stop when the string finally ends
+    for (int i = 0; word[i] != '\0'; i++) {
+
+        //We will only acknowledge lower-case letters from the ASCII alphabet
+        if (word[i] >= 'a' && word[i] <= 'z') {
+
+            //Converts lower_case to upper-case
+            word[i] = word[i] - 32;
+        }
+    }
+    printf("Final frase: %s \n", word);
+
+    return 0;
+}
