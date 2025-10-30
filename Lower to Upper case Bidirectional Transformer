@@ -11,6 +11,7 @@ int main()
         printf("Hello, do you want to convert your word from lower_case to upper-case (input 0) or from upper-case to lower_case (input 1): ");
         scanf("%d", &x, "\n");
         // We will repeat the loop as long as the use gives x a value equal to either 1 or 0
+        // Note to user, the loop doesn't avoid any simbols different from a number, I apologise, I hope to patch this mistake in the future when I have the skills to do it
     } while(x != 0 && x != 1);
     
     if (x == 0) {
