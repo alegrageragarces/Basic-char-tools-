@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+// Function to check if a text is a palindrome (ignoring spaces)
+int is_palindrome(char text[]) {
+    int left = 0;
+    int right = strlen(text) - 1;
+
+    while (left < right) {
+        // Skip spaces from the left
+        if (text[left] == ' ') {
+            left++;
+            continue;
+        }
+        // Skip spaces from the right
+        if (text[right] == ' ') {
+            right--;
+            continue;
+        }
+        // Compare characters
+        if (text[left] != text[right]) {
+            return 0; // Not a palindrome
+        }
+        left++;
+        right--;
+    }
+
+    return 1; // It is a palindrome
+}
+
+int main() {
+    char text[] = "anita lava la tina";
+    
+    if (is_palindrome(text)) {
+        printf("The text is a palindrome.\n");
+    } else {
+        printf("The text is not a palindrome.\n");
+    }
+
+    return 0;
+}
