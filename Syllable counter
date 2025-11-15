@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+#define MAX_TEXT 1000
+
+// Function that checks if a character is a vowel (no accents)
+int isVowel(char c) {
+    c = tolower(c);
+    return (c=='a' || c=='e' || c=='i' || c=='o' || c=='u');
+}
+
+// Function that counts syllables based on groups of vowels
+int countSyllables(const char *text) {
+    int syllables = 0;
+    int inVowelGroup = 0;
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isVowel(text[i])) {
+            // We are entering a new vowel group
+            if (!inVowelGroup) {
+                syllables++;
+                inVowelGroup = 1; 
+            }
+        } else {
+            // We left a vowel group
+            inVowelGroup = 0;
+        }
+    }
+
+    return syllables;
+}
+
+int main() {
+    char text[MAX_TEXT];
+
+    // Ask user to enter text
+    printf("Enter a text (no accents):\n");
+    fgets(text, MAX_TEXT, stdin);
+
+    // Count syllables
+    int result = countSyllables(text);
+
+    // Display result
+    printf("Estimated syllable count: %d\n", result);
+
+    return 0;
+}
