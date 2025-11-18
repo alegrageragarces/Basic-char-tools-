@@ -1,1 +1,26 @@
+#include <stdio.h>
+#include <ctype.h>
 
+// Function now returns a char* instead of void
+char* replaceVowels(char *text) {
+    // Loop through each character in the string
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = tolower(text[i]); // Convert to lowercase for comparison
+
+        // Check if the character is a vowel
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            text[i] = '-';  // Replace vowel with '-'
+        }
+    }
+    return text; // Return the modified string
+}
+
+int main() {
+    char text[] = "Hello World, this is an example!";
+
+    printf("Original text: %s\n", text);
+
+    printf("Modified text: %s\n", replaceVowels(text));
+
+    return 0;
+}
