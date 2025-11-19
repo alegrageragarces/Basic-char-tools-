@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    char text[200];
+
+    printf("Enter text: ");
+    scanf("%199s", text);   // lee texto sin espacios
+
+    // Cipher: shift letters +2 with wrap-around
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = text[i];
+
+        if (c >= 'a' && c <= 'z') {
+            text[i] = ((c - 'a' + 2) % 26) + 'a';
+        }
+        else if (c >= 'A' && c <= 'Z') {
+            text[i] = ((c - 'A' + 2) % 26) + 'A';
+        }
+        // otros caracteres quedan igual
+    }
+
+    printf("Encrypted text: %s\n", text);
+
+    return 0;
+}
