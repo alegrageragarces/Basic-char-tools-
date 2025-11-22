@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+// Function that counts how many distinct letters appear in the text.
+// Uppercase and lowercase are considered different.
+int countDistinctLetters(const char *text) {
+    int seen[52] = {0};   // Array to track letters:
+                          // 0–25  -> 'A' to 'Z'
+                          // 26–51 -> 'a' to 'z'
+    int count = 0;        // Number of distinct letters found
+
+    // Go through each character in the string
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = text[i];
+
+        // Check if the character is an uppercase letter
+        if (c >= 'A' && c <= 'Z') {
+            int index = c - 'A';   // Map 'A'..'Z' to 0..25
+
+            // If this letter has not been counted before
+            if (!seen[index]) {
+                seen[index] = 1;   // Mark as seen
+                count++;           // Increase distinct letter count
+            }
+        }
+        // Check if the character is a lowercase letter
+        else if (c >= 'a' && c <= 'z') {
+            int index = 26 + (c - 'a');  // Map 'a'..'z' to 26..51
+
+            if (!seen[index]) {
+                seen[index] = 1;
+                count++;
+            }
+        }
+    }
+
+    return count; // Return the total number of distinct letters
+}
+
+int main() {
+    char text[500];   // Buffer to store the input text
+
+    printf("Enter a text: ");
+    fgets(text, sizeof(text), stdin); // Read a full line of text
+
+    // Call the function and print the result
+    int result = countDistinctLetters(text);
+    printf("Number of distinct letters: %d\n", result);
+
+    return 0; // End of program
+}
