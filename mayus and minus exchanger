@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+// Function that converts uppercase letters to lowercase
+// and lowercase letters to uppercase.
+void swapCase(char *text) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = text[i];
+
+        // If the character is uppercase ('A' to 'Z')
+        if (c >= 'A' && c <= 'Z') {
+            text[i] = c + ('a' - 'A');   // Convert to lowercase
+        }
+        // If the character is lowercase ('a' to 'z')
+        else if (c >= 'a' && c <= 'z') {
+            text[i] = c - ('a' - 'A');   // Convert to uppercase
+        }
+        // Other characters remain unchanged
+    }
+}
+
+int main() {
+    char text[500];
+
+    printf("Enter a text: ");
+    fgets(text, sizeof(text), stdin);   // Read a full line of text
+
+    swapCase(text);                     // Convert the case of letters
+
+    printf("Converted text: %s\n", text);
+
+    return 0;
+}
