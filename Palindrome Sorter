@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-// Function to check if a text is a palindrome (ignoring spaces)
+// Function to check if a text is a palindrome 
 int is_palindrome(char text[]) {
     int left = 0;
     int right = strlen(text) - 1;
@@ -18,7 +18,7 @@ int is_palindrome(char text[]) {
             right--;
             continue;
         }
-        // Compare characters
+        // Comparing characters
         if (text[left] != text[right]) {
             return 0; // Not a palindrome
         }
