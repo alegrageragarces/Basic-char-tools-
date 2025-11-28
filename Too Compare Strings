@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+// Function that compares two strings without using strcmp()
+// Returns:
+//  0  -> strings are equal
+//  <0 -> first string is smaller
+//  >0 -> first string is greater
+int compareStrings(const char *s1, const char *s2) {
+    int i = 0;
+
+    // Compare characters one by one
+    while (s1[i] != '\0' && s2[i] != '\0') {
+        if (s1[i] != s2[i]) {
+            // Return the ASCII difference when characters are not equal
+            return (unsigned char)s1[i] - (unsigned char)s2[i];
+        }
+        i++;
+    }
+
+    // If one string ends earlier, compare the null terminators
+    return (unsigned char)s1[i] - (unsigned char)s2[i];
+}
+
+int main() {
+    char str1[] = "hello";
+    char str2[] = "hella";
+
+    int result = compareStrings(str1, str2);
+
+    if (result == 0) {
+        printf("Strings are equal.\n");
+    } else if (result < 0) {
+        printf("First string is smaller.\n");
+    } else {
+        printf("First string is greater.\n");
+    }
+
+    return 0;
+}
