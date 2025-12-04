@@ -1,0 +1,86 @@
+#include <stdio.h>
+
+// function to check if a letter is a vowel
+int isVowel(char letter) {
+    // convert uppercase to lowercase
+    if (letter >= 'A' && letter <= 'Z') {
+        letter = letter + ('a' - 'A');
+    }
+
+    // check vowel
+    if (letter == 'a' || letter == 'e' || letter == 'i' ||
+        letter == 'o' || letter == 'u') {
+        return 1;
+    }
+    return 0;
+}
+
+int main() {
+
+    char inputText[1000];
+    char currentWord[100];
+    int textIndex = 0;
+    int wordIndex = 0;
+
+    printf("Enter a sentence: ");
+    fgets(inputText, 1000, stdin);
+
+    // read each character from the input
+    while (inputText[textIndex] != '\0') {
+
+        // build the word if it's a letter
+        if (inputText[textIndex] != ' ' && inputText[textIndex] != '\n') {
+            currentWord[wordIndex] = inputText[textIndex];
+            wordIndex++;
+        } else {
+
+            // end of a word
+            currentWord[wordIndex] = '\0';
+
+            // convert the word if it exists
+            if (wordIndex > 0) {
+
+                // if word starts with vowel
+                if (isVowel(currentWord[0])) {
+                    printf("%say ", currentWord);
+                }
+                else {
+                    // print from second letter to end
+                    int i = 1;
+                    while (currentWord[i] != '\0') {
+                        putchar(currentWord[i]);
+                        i++;
+                    }
+                    // print first letter and "ay"
+                    putchar(currentWord[0]);
+                    printf("ay ");
+                }
+            }
+
+            // reset word index
+            wordIndex = 0;
+        }
+
+        textIndex++;
+    }
+
+    // process last word if text does not end with space
+    if (wordIndex > 0) {
+        currentWord[wordIndex] = '\0';
+
+        if (isVowel(currentWord[0])) {
+            printf("%say ", currentWord);
+        } else {
+            int i = 1;
+            while (currentWord[i] != '\0') {
+                putchar(currentWord[i]);
+                i++;
+            }
+            putchar(currentWord[0]);
+            printf("ay ");
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
