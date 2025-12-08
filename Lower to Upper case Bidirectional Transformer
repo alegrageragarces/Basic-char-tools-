@@ -2,8 +2,8 @@
 
 int main()
 {
-    //Word length of Mary poppin's iconic supercalifragilisticexpialidocious + the null element
-    char word [35];
+    //Word length of Mary poppin's iconic supercalifragilisticexpialidocious + the null element, the null element isnt included in the max char count
+    char word [34];
     int x;
     
     // The do while loop guarantees the loop is done at least once
